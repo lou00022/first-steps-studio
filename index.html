@@ -15,6 +15,9 @@
     <!-- Google Fonts: Inter (Apple-like system font) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <style>
         /* Custom Apple-like Animations & Styles */
         body {
@@ -80,6 +83,26 @@
             background-color: #1d1d1f;
             color: white;
         }
+        
+        /* AI Tool Styles */
+        .ai-input {
+            border: 1px solid #d2d2d7;
+            background: rgba(255,255,255,0.8);
+            transition: border-color 0.2s;
+        }
+        .ai-input:focus {
+            outline: none;
+            border-color: #0071e3;
+            background: #fff;
+        }
+        .sparkle-btn {
+            background: linear-gradient(135deg, #0071e3 0%, #a259ff 100%);
+            color: white;
+            transition: opacity 0.3s;
+        }
+        .sparkle-btn:hover {
+            opacity: 0.9;
+        }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -94,6 +117,48 @@
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #a8a8a8; 
+        }
+        
+        /* Loading Animation */
+        .dot-flashing {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #9880ff;
+            color: #9880ff;
+            animation: dot-flashing 1s infinite linear alternate;
+            animation-delay: 0.5s;
+        }
+        .dot-flashing::before, .dot-flashing::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        .dot-flashing::before {
+            left: -15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #9880ff;
+            color: #9880ff;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 0s;
+        }
+        .dot-flashing::after {
+            left: 15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #9880ff;
+            color: #9880ff;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 1s;
+        }
+        @keyframes dot-flashing {
+            0% { background-color: #9880ff; }
+            50%, 100% { background-color: #ebe6ff; }
         }
     </style>
 </head>
@@ -111,8 +176,8 @@
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#featured" class="text-xs font-medium text-gray-600 hover:text-black transition-colors">Collections</a>
+                    <a href="#ai-studio" class="text-xs font-medium text-gray-600 hover:text-black transition-colors">AI Studio</a>
                     <a href="#about" class="text-xs font-medium text-gray-600 hover:text-black transition-colors">Philosophy</a>
-                    <a href="#contact" class="text-xs font-medium text-gray-600 hover:text-black transition-colors">Contact</a>
                     <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="bg-black text-white px-4 py-1.5 rounded-full text-xs font-medium hover:bg-gray-800 transition-colors">
                         Visit Etsy Shop
                     </a>
@@ -131,6 +196,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-gray-100 absolute w-full">
             <div class="px-4 pt-2 pb-4 space-y-1">
                 <a href="#featured" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50">Collections</a>
+                <a href="#ai-studio" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50">AI Studio</a>
                 <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50">Philosophy</a>
                 <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="block mt-4 text-center px-3 py-3 rounded-full bg-black text-white font-medium">Shop on Etsy</a>
             </div>
@@ -248,8 +314,110 @@
         </div>
     </section>
 
+    <!-- NEW SECTION: AI Design Studio -->
+    <section id="ai-studio" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 font-semibold text-sm tracking-wide uppercase mb-2 block">Powered by Gemini AI</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Design Studio Tools.</h2>
+                <p class="text-gray-500 text-lg">Personalize your experience with our intelligent design assistants.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Tool 1: Caption Generator -->
+                <div class="bg-[#f5f5f7] rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 flex flex-col h-full">
+                    <div class="mb-6">
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm mb-4">
+                            <i class="fa-solid fa-pen-nib text-purple-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">The Caption Crafter</h3>
+                        <p class="text-gray-500 mt-2">Stuck on what to write? Generate the perfect message for milestone cards, birth announcements, or gift notes.</p>
+                    </div>
+
+                    <div class="space-y-4 flex-grow">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Occasion</label>
+                            <input type="text" id="caption-occasion" placeholder="e.g. 1st Birthday, Baby Shower, Welcome Home" class="w-full ai-input rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Tone</label>
+                            <select id="caption-tone" class="w-full ai-input rounded-lg px-4 py-3 text-gray-900">
+                                <option value="sweet and sentimental">Sweet & Sentimental</option>
+                                <option value="witty and fun">Witty & Fun</option>
+                                <option value="minimalist and modern">Minimalist & Modern</option>
+                                <option value="rhyming poem">Rhyming Poem</option>
+                            </select>
+                        </div>
+                        <button onclick="generateCaption()" class="sparkle-btn w-full py-3 rounded-lg font-medium shadow-md flex items-center justify-center gap-2">
+                            <span>Generate Caption</span>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+
+                    <!-- Output Area -->
+                    <div id="caption-result" class="mt-6 hidden">
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 relative">
+                            <div id="caption-loading" class="hidden absolute inset-0 bg-white/90 z-10 flex items-center justify-center rounded-xl">
+                                <div class="dot-flashing"></div>
+                            </div>
+                            <h4 class="text-xs font-semibold text-gray-400 uppercase mb-2">Your Result:</h4>
+                            <div id="caption-text" class="text-gray-800 font-medium italic leading-relaxed text-lg"></div>
+                            <button onclick="copyToClipboard('caption-text')" class="mt-4 text-xs text-blue-500 font-semibold hover:text-blue-700 flex items-center gap-1">
+                                <i class="fa-regular fa-copy"></i> Copy Text
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: Dream Print Visualizer (Image Gen) -->
+                <div class="bg-black text-white rounded-3xl p-8 md:p-12 shadow-xl flex flex-col h-full relative overflow-hidden">
+                    <!-- Background abstract blob -->
+                    <div class="absolute -top-20 -right-20 w-64 h-64 bg-purple-600 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
+
+                    <div class="mb-6 relative z-10">
+                        <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-4 border border-white/10">
+                            <i class="fa-solid fa-image text-blue-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Dream Print Visualizer</h3>
+                        <p class="text-gray-400 mt-2">Describe your nursery theme, and our AI will draft a concept print for you. Visualize your custom order.</p>
+                    </div>
+
+                    <div class="space-y-4 relative z-10 flex-grow">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Describe your vision</label>
+                            <textarea id="image-prompt" rows="3" placeholder="e.g. A watercolor painting of a sleepy fox in a forest, pastel green and orange tones." class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"></textarea>
+                        </div>
+                        <button onclick="generatePrint()" class="bg-white text-black w-full py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
+                            <span>Visualize Concept</span>
+                            <i class="fa-solid fa-wand-magic-sparkles text-purple-600"></i>
+                        </button>
+                    </div>
+
+                    <!-- Image Output Area -->
+                    <div id="image-result" class="mt-6 hidden relative z-10">
+                        <div class="bg-white/5 rounded-xl border border-white/10 overflow-hidden relative aspect-square md:aspect-video flex items-center justify-center">
+                             <div id="image-loading" class="absolute inset-0 bg-black/80 z-20 flex flex-col items-center justify-center hidden">
+                                <div class="dot-flashing mb-4"></div>
+                                <span class="text-xs text-gray-400">Dreaming up your design...</span>
+                            </div>
+                            <img id="generated-image" src="" alt="Generated Print" class="w-full h-full object-cover hidden">
+                            <div id="image-placeholder" class="text-gray-600 text-sm flex flex-col items-center">
+                                <i class="fa-regular fa-image text-2xl mb-2"></i>
+                                Preview appears here
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 text-center">AI generated concept. Actual products may vary.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Philosophy / About Section -->
-    <section id="about" class="py-24 bg-white">
+    <section id="about" class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Simple. Meaningful. Yours.</h2>
             <p class="text-xl md:text-2xl text-gray-500 font-light leading-relaxed">
@@ -327,6 +495,118 @@
                 });
             });
         });
+        
+        // --- GEMINI API INTEGRATION ---
+        const apiKey = ""; // API Key provided by environment
+        
+        async function generateCaption() {
+            const occasion = document.getElementById('caption-occasion').value;
+            const tone = document.getElementById('caption-tone').value;
+            const resultDiv = document.getElementById('caption-result');
+            const resultText = document.getElementById('caption-text');
+            const loading = document.getElementById('caption-loading');
+            
+            if (!occasion) {
+                alert("Please enter an occasion.");
+                return;
+            }
+
+            // UI Updates
+            resultDiv.classList.remove('hidden');
+            loading.classList.remove('hidden');
+            resultText.innerHTML = "";
+            
+            const prompt = `Write a ${tone} short caption (max 20 words) for a baby milestone card or gift note. Occasion: ${occasion}. Do not use quotes.`;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                if (!response.ok) throw new Error('API Request Failed');
+
+                const data = await response.json();
+                const text = data.candidates[0].content.parts[0].text;
+                
+                // Parse markdown just in case, though usually plain text requested
+                resultText.innerHTML = marked.parse(text);
+                
+            } catch (error) {
+                console.error(error);
+                resultText.innerHTML = "Sorry, we couldn't generate a caption right now. Please try again.";
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        async function generatePrint() {
+            const promptInput = document.getElementById('image-prompt').value;
+            const resultDiv = document.getElementById('image-result');
+            const imgElement = document.getElementById('generated-image');
+            const placeholder = document.getElementById('image-placeholder');
+            const loading = document.getElementById('image-loading');
+
+            if (!promptInput) {
+                alert("Please describe your vision.");
+                return;
+            }
+
+            // UI Updates
+            resultDiv.classList.remove('hidden');
+            loading.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+            imgElement.classList.add('hidden');
+
+            const fullPrompt = `A high-quality, minimalist nursery art print. Vector style or watercolor style. ${promptInput}. White background, professional artistic style suitable for framing.`;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instances: [{ prompt: fullPrompt }],
+                        parameters: { sampleCount: 1 }
+                    })
+                });
+
+                if (!response.ok) throw new Error('Image Gen Failed');
+
+                const data = await response.json();
+                const base64Image = data.predictions[0].bytesBase64Encoded;
+                
+                imgElement.src = `data:image/png;base64,${base64Image}`;
+                imgElement.classList.remove('hidden');
+
+            } catch (error) {
+                console.error(error);
+                placeholder.innerHTML = "Sorry, we couldn't generate an image. Please try again.";
+                placeholder.classList.remove('hidden');
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            // Use execCommand for better iframe compatibility
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 2000);
+        }
     </script>
 </body>
 </html>
