@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FirstStepsStudioCo | Pro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>FirstStepsStudioCo | Early Learning</title>
     
     <style>
         /* --- APPLE SYSTEM VARIABLES --- */
         :root {
             --bg-body: #ffffff;
-            --bg-gray: #f5f5f7; /* Classic Apple Light Grey */
+            --bg-card: #f5f5f7; /* Apple Light Grey */
             --text-main: #1d1d1f;
             --text-secondary: #86868b;
             --accent-blue: #0071e3;
             --accent-hover: #0077ed;
-            --radius-card: 28px;
+            --accent-orange: #e67e22;
+            --radius-card: 24px;
             --radius-btn: 980px;
-            --transition-apple: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smooth 'heavy' easing */
+            --transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,308 +38,278 @@
             position: fixed;
             top: 0;
             width: 100%;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.8);
+            height: 52px;
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
-            z-index: 999;
+            z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .nav-content {
+        .nav-inner {
             width: 100%;
-            max-width: 980px;
+            max-width: 1000px;
             display: flex;
             justify-content: space-between;
-            padding: 0 20px;
-            font-size: 12px;
-            font-weight: 400;
-        }
-
-        .nav-content a {
-            color: var(--text-main);
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .nav-content a:hover { opacity: 1; }
-
-        /* --- TYPOGRAPHY & ANIMATION CLASSES --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition-apple);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h1, h2 { letter-spacing: -0.02em; font-weight: 600; }
-        
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 95vh;
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: #000; /* Dark Mode Hero */
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-video-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            z-index: 0;
-        }
-
-        .hero-content {
-            z-index: 10;
-            max-width: 800px;
             padding: 0 20px;
         }
 
-        .hero h1 {
-            font-size: 5rem;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            background: linear-gradient(to bottom, #ffffff, #a1a1a6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .logo { font-weight: 600; font-size: 1.1rem; letter-spacing: -0.5px; }
 
-        .hero p {
-            font-size: 1.5rem;
-            color: #a1a1a6;
-            margin-bottom: 30px;
-        }
-
-        .cta-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .link-blue {
-            color: #2997ff;
-            font-weight: 500;
-        }
-        .link-blue:hover { text-decoration: underline; }
-
-        /* --- GRID SECTION (The Bento Box) --- */
-        .showcase {
-            background: var(--bg-body);
-            padding: 100px 20px;
-        }
-
-        .grid-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .grid-item {
-            background: var(--bg-gray);
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.5s ease;
-            position: relative;
-            height: 600px; /* Fixed height for consistency */
-        }
-
-        /* Make one item span full width */
-        .full-width { grid-column: span 2; height: 500px; }
-
-        .grid-item:hover { transform: scale(1.01); }
-
-        .grid-text h2 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .grid-text p {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .grid-img {
-            margin-top: auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: var(--transition-apple);
-        }
-
-        .grid-item:hover .grid-img {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-        }
-
-        /* --- BUTTONS --- */
-        .btn-buy {
-            background-color: var(--accent-blue);
+        .btn-shop {
+            background-color: var(--text-main);
             color: white;
-            padding: 8px 16px;
+            padding: 6px 16px;
             border-radius: var(--radius-btn);
             font-size: 12px;
             font-weight: 500;
-            display: inline-block;
+            transition: 0.3s;
         }
         
-        .btn-buy:hover { background-color: var(--accent-hover); }
+        .btn-shop:hover { background-color: var(--accent-blue); }
 
-        /* --- BIG TEXT STATEMENT --- */
-        .statement {
-            padding: 150px 20px;
+        /* --- HERO SECTION --- */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            text-align: center;
             max-width: 800px;
             margin: 0 auto;
         }
-        
-        .statement h3 {
+
+        .hero h1 {
             font-size: 3.5rem;
             line-height: 1.1;
-            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1.5px;
         }
-        
-        .statement span { color: var(--text-main); }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Video Container: Made smaller to fit square/portrait videos nicely */
+        .hero-video-container {
+            width: 90%;
+            max-width: 500px; /* Constrained width for portrait video */
+            margin: 0 auto 80px auto;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            background: #fff;
+        }
+
+        .hero-video-container:hover { transform: scale(1.02); }
+
+        video { width: 100%; display: block; }
+
+        /* --- BENTO GRID --- */
+        .grid-section {
+            padding: 0 20px 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            /* Soft mask to round corners of images */
+            mask-image: -webkit-radial-gradient(white, black); 
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+
+        .card.full-width {
+            grid-column: span 2;
+            height: auto;
+            min-height: 600px;
+        }
+
+        .card.half-width {
+            height: 600px;
+        }
+
+        .card-content {
+            padding: 50px 30px 20px 30px;
+            z-index: 10;
+        }
+
+        .eyebrow {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            font-size: 2.2rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+            margin-top: auto;
+            object-fit: cover;
+        }
+
+        /* Specific styles for your tall images */
+        .schedule-img {
+            width: 80%; /* Reduced width to show the full card design */
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
 
         /* --- FOOTER --- */
         footer {
-            background: var(--bg-gray);
-            padding: 40px 20px;
+            background: var(--bg-card);
+            padding: 50px 20px;
+            text-align: center;
             font-size: 12px;
             color: var(--text-secondary);
-        }
-
-        .footer-content {
-            max-width: 980px;
-            margin: 0 auto;
-            border-top: 1px solid #d2d2d7;
-            padding-top: 20px;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .grid-container { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-            .statement h3 { font-size: 2rem; }
-            .grid-item { height: auto; padding: 40px 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card.full-width { grid-column: span 1; min-height: auto; }
+            .card.half-width { height: auto; min-height: 500px; }
+            .schedule-img { width: 95%; margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-content">
-            <a href="#"><i class="fa-solid fa-apple-whole"></i> FirstStepsStudioCo</a>
-            <div style="display:flex; gap: 20px;">
-                <a href="#new">New</a>
-                <a href="#shop">Shop</a>
-                <a href="#about">Studio</a>
-            </div>
-            <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-buy">Shop Etsy</a>
+        <div class="nav-inner">
+            <a href="#" class="logo">FirstSteps<span>StudioCo</span></a>
+            <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-shop">Shop Etsy</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1920&q=80" class="hero-video-bg" alt="Background">
+    <section class="hero reveal">
+        <h1>Learning made beautiful.</h1>
+        <p>Printable bundles designed to bring routine and joy to toddlers ages 2–5.</p>
+    </section>
+
+    <div class="hero-video-container reveal">
+        <video autoplay loop muted playsinline>
+            <source src="hero-video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="grid-section">
+        <h2 class="section-title">The Collection.</h2>
         
-        <div class="hero-content reveal">
-            <h1>FirstSteps.<br>Pro.</h1>
-            <p>The ultimate collection of handcrafted goods.</p>
-            <div class="cta-links">
-                <a href="https://www.etsy.com/shop/FirstStepsStudioCo" class="link-blue">Buy ></a>
-                <a href="#learn-more" class="link-blue">Learn more ></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="statement" id="learn-more">
-        <h3 class="reveal">
-            Design isn't just about how it looks. 
-            <span>It's about how it feels.</span>
-            We craft items that bring <span>joy, utility, and beauty</span> into your everyday life.
-        </h3>
-    </section>
-
-    <section class="showcase" id="shop">
-        <div class="grid-container">
+        <div class="bento-grid">
             
-            <div class="grid-item full-width reveal">
-                <div class="grid-text">
-                    <p style="color: #e67e22; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px;">NEW ARRIVAL</p>
-                    <h2>The Collection.</h2>
-                    <p>Redefining handmade excellence.</p>
+            <div class="card full-width reveal">
+                <div class="card-content">
+                    <div class="eyebrow">New Arrival</div>
+                    <h3>Visual Schedule Cards.</h3>
+                    <p>Help toddlers understand their day with 60+ routine cards.</p>
+                    <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="cta-btn">View Details</a>
                 </div>
-                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80" alt="Product" class="grid-img">
+                <img src="schedule-cards.jpg" alt="Visual Schedule Cards" class="card-img schedule-img">
             </div>
 
-            <div class="grid-item reveal">
-                <div class="grid-text">
-                    <h2>Digital Art.</h2>
-                    <p>Instant inspiration.</p>
-                    <a href="#" class="link-blue">View ></a>
+            <div class="card half-width reveal">
+                <div class="card-content">
+                    <div class="eyebrow">Best Seller</div>
+                    <h3>Preschool Bundle.</h3>
+                    <p>Alphabet, Colors, Shapes & Emotions.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=400&q=80" alt="Product" class="grid-img">
+                <img src="bundle-overview.jpg" alt="Preschool Bundle Overview" class="card-img" style="height: 100%; object-fit: contain; padding-bottom: 20px;">
             </div>
 
-            <div class="grid-item reveal">
-                <div class="grid-text">
-                    <h2>Custom Made.</h2>
-                    <p>Yours, and yours alone.</p>
-                    <a href="#" class="link-blue">View ></a>
+            <div class="card half-width reveal">
+                <div class="card-content">
+                    <div class="eyebrow">Instant Download</div>
+                    <h3>Ready to Print.</h3>
+                    <p>See what's inside.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=400&q=80" alt="Product" class="grid-img">
+                <video autoplay loop muted playsinline class="card-img" style="height: 100%; object-fit: cover;">
+                    <source src="bundle-preview.mp4" type="video/mp4">
+                </video>
             </div>
 
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <p>Copyright © 2024 FirstStepsStudioCo. All rights reserved.</p>
-            <p style="margin-top: 10px;">
-                <a href="#" style="margin-right: 15px;">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-            </p>
-        </div>
+        <p>Copyright © 2024 FirstStepsStudioCo.</p>
+        <p>All designs are for personal and classroom use.</p>
+        <br>
+        <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" style="color: var(--accent-blue);">Visit Official Etsy Shop ></a>
     </footer>
 
     <script>
-        // This simple script checks when elements are visible and adds the 'active' class
-        const observerOptions = {
-            threshold: 0.1 // Trigger when 10% of the item is visible
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease';
             observer.observe(el);
         });
     </script>
