@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FirstStepsStudioCo | Early Learning</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2274/2274536.png"> 
 
     <style>
         /* --- APPLE STYLE VARIABLES --- */
         :root {
             --bg-body: #ffffff;
-            --bg-card: #f5f5f7; /* Apple Light Grey */
+            --bg-card: #f5f5f7;
             --text-main: #1d1d1f;
             --text-secondary: #86868b;
             --accent-blue: #0071e3;
@@ -75,7 +74,7 @@
         
         .btn-shop:hover { background-color: var(--accent-blue); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
             padding-top: 130px;
             padding-bottom: 50px;
@@ -86,3 +85,302 @@
 
         .hero h1 {
             font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .hero-video-container {
+            width: 90%;
+            max-width: 480px;
+            margin: 0 auto 100px auto;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            background: #fff;
+        }
+
+        .hero-video-container:hover { transform: scale(1.02); }
+
+        video { width: 100%; display: block; }
+
+        /* --- GRID --- */
+        .grid-section {
+            padding: 0 20px 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+
+        .card.full-width { grid-column: span 2; min-height: 600px; }
+        .card.half-width { height: 600px; }
+
+        .card-content { padding: 50px 30px 20px 30px; z-index: 10; }
+
+        .eyebrow {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .card h3 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 10px; }
+        .card p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 20px; }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+            margin-top: auto;
+            object-fit: cover;
+        }
+
+        .schedule-img {
+            width: 80%;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* --- STEPS & REVIEWS --- */
+        .steps-wrapper {
+            background: #fff;
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .step-box { flex: 1; min-width: 250px; }
+
+        .reviews-section {
+            background-color: var(--bg-card); 
+            padding: 100px 20px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-card);
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card.full-width { grid-column: span 1; min-height: auto; }
+            .card.half-width { height: auto; min-height: 500px; }
+            .schedule-img { width: 95%; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">FirstSteps<span>StudioCo</span></a>
+            <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-shop">Shop Etsy</a>
+        </div>
+    </nav>
+
+    <section class="hero reveal">
+        <h1>Learning made beautiful.</h1>
+        <p>Printable bundles designed to bring routine and joy to toddlers ages 2–5.</p>
+    </section>
+
+    <div class="hero-video-container reveal">
+        <video autoplay loop muted playsinline>
+            <source src="hero-video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="grid-section">
+        <h2 class="section-title">The Collection.</h2>
+        
+        <div class="bento-grid">
+            
+            <div class="card full-width reveal">
+                <div class="card-content">
+                    <div class="eyebrow">New Arrival</div>
+                    <h3>Visual Schedule Cards.</h3>
+                    <p>Help toddlers understand their day with 60+ routine cards.</p>
+                    <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="cta-btn">View Details</a>
+                </div>
+                <img src="schedule-cards.jpg" alt="Visual Schedule Cards" class="card-img schedule-img">
+            </div>
+
+            <div class="card half-width reveal">
+                <div class="card-content">
+                    <div class="eyebrow">Best Seller</div>
+                    <h3>Preschool Bundle.</h3>
+                    <p>Alphabet, Colors, Shapes & Emotions.</p>
+                </div>
+                <img src="bundle-overview.jpg" alt="Preschool Bundle Overview" class="card-img" style="height: 100%; object-fit: contain; padding-bottom: 20px;">
+            </div>
+
+            <div class="card half-width reveal">
+                <div class="card-content">
+                    <div class="eyebrow">Instant Download</div>
+                    <h3>Ready to Print.</h3>
+                    <p>See what's inside.</p>
+                </div>
+                <video autoplay loop muted playsinline class="card-img" style="height: 100%; object-fit: cover;">
+                    <source src="bundle-preview.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="steps-wrapper reveal">
+        <h2 class="section-title" style="margin-bottom: 10px;">How it works.</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 40px;">Simple as 1, 2, 3.</p>
+        
+        <div class="steps-container">
+            <div class="step-box">
+                <div style="font-size: 2.5rem; color: #0071e3; margin-bottom: 15px;">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 10px;">1. Instant Download</h3>
+                <p style="color: #86868b;">Get your files immediately after purchase.</p>
+            </div>
+            <div class="step-box">
+                <div style="font-size: 2.5rem; color: #e67e22;">
+                    <i class="fa-solid fa-print"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 10px;">2. Print at Home</h3>
+                <p style="color: #86868b;">Print on standard paper or cardstock.</p>
+            </div>
+            <div class="step-box">
+                <div style="font-size: 2.5rem; color: #34c759;">
+                    <i class="fa-solid fa-shapes"></i>
+                </div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 10px;">3. Start Learning</h3>
+                <p style="color: #86868b;">Cut out the cards and start your routine.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews-section reveal">
+        <h2 class="section-title" style="text-align:center;">Parents love it.</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <div style="color: #f1c40f; margin-bottom: 10px;">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 10px;">"Game changer!"</h4>
+                <p style="color: #555; font-size: 0.95rem;">"My 3-year-old actually wants to get dressed now."</p>
+                <p style="color: #999; font-size: 0.8rem; margin-top: 15px; font-weight: 600;">— Emily R.</p>
+            </div>
+            <div class="review-card">
+                <div style="color: #f1c40f; margin-bottom: 10px;">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <h4 style="font-weight: 700; margin-bottom: 10px;">"Beautiful quality."</h4>
+                <p style="color: #555; font-size: 0.95rem;">"Printed on cardstock and it looks professional."</p>
+                <p style="color: #999; font-size: 0.8rem; margin-top: 15px; font-weight: 600;">— Sarah J.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright © 2024 FirstStepsStudioCo.</p>
+        <br>
+        <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" style="color: var(--accent-blue);">Visit Official Etsy Shop ></a>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
