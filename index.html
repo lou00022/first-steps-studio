@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstStepsStudioCo | Unique & Handmade</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22; /* Warm orange - change to match your brand */
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --white: #ffffff;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-shop {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        .btn-shop:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1452802442853-2b97c83bec36?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-hero {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .btn-hero:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* --- FEATURED SECTION --- */
+        .featured {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 0.5rem auto 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-card {
+            display: inline-block;
+            color: var(--accent-color);
+            font-weight: bold;
+            border: 2px solid var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 5px;
+        }
+
+        .btn-card:hover {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background-color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-link {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Simplified for mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">FirstSteps<span>StudioCo</span></a>
+            <nav class="nav-links">
+                <a href="#featured">Collections</a>
+                <a href="#about">About</a>
+                <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-shop">Visit Etsy Shop</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Create Your Perfect Moment</h1>
+            <p>Handcrafted designs and unique treasures made with love. Explore our latest collection on Etsy today.</p>
+            <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-hero">Shop Now</a>
+        </div>
+    </section>
+
+    <section id="featured" class="featured">
+        <h2 class="section-title">Featured Creations</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80" alt="Product 1" class="product-img">
+                <div class="product-info">
+                    <h3>New Arrivals</h3>
+                    <p>Discover our newest additions, crafted to bring joy and creativity to your life.</p>
+                    <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-card">View on Etsy</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80" alt="Product 2" class="product-img">
+                <div class="product-info">
+                    <h3>Best Sellers</h3>
+                    <p>Our most loved items. See what everyone is talking about.</p>
+                    <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-card">View on Etsy</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Product 3" class="product-img">
+                <div class="product-info">
+                    <h3>Custom Orders</h3>
+                    <p>Looking for something specific? We love creating custom pieces just for you.</p>
+                    <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-card">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <h2 class="section-title">About FirstStepsStudioCo</h2>
+            <p>
+                Welcome to <strong>FirstStepsStudioCo</strong>! We are dedicated to providing high-quality, 
+                unique items that add a special touch to your life. 
+            </p>
+            <p>
+                Every item in our shop is selected or crafted with care. Whether you are looking for 
+                the perfect gift or a treat for yourself, we hope you find something you love.
+            </p>
+            <a href="https://www.etsy.com/shop/FirstStepsStudioCo" target="_blank" class="btn-shop">Read Our Full Story on Etsy</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 FirstStepsStudioCo. All rights reserved.</p>
+        <p>Check us out on <a href="https://www.etsy.com/shop/FirstStepsStudioCo" class="footer-link" target="_blank">Etsy</a></p>
+    </footer>
+
+</body>
+</html>
